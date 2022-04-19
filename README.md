@@ -1,6 +1,6 @@
 # IndianTodoListAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+Formulario hecho en Angular utilizando componentes anidados, servicios, enrutamiento y navegación, incluyendo carga en diferido (lazy load).
 
 ## Development server
 
