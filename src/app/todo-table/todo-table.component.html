@@ -2,7 +2,7 @@
 
     <mat-form-field appearance="standard">
         <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Chumpi" #input>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Create Angular tutorial video" #input>
     </mat-form-field>
 
     <div class="mat-elevation-z8">
@@ -10,48 +10,48 @@
 
             <!-- nombreHuevo Column -->
             <ng-container matColumnDef="nombreHuevo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Task </th>
                 <td mat-cell *matCellDef="let row"> {{row.nombreHuevo}} </td>
             </ng-container>
 
             <!-- formaHuevo Column -->
             <ng-container matColumnDef="formaHuevo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Forma </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Participants </th>
                 <td mat-cell *matCellDef="let row"> {{row.formaHuevo}} </td>
             </ng-container>
 
             <!-- swagHuevo Column -->
             <ng-container matColumnDef="swagHuevo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Índice de swag </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Difficulty </th>
                 <td mat-cell *matCellDef="let row"> {{row.swagHuevo}} </td>
             </ng-container>
 
             <!-- bicepsHuevo Column -->
             <ng-container matColumnDef="bicepsHuevo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Bíceps </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Priority </th>
                 <td mat-cell *matCellDef="let row"> {{row.bicepsHuevo}} </td>
             </ng-container>
 
             <!-- fechaHuevo Column -->
             <ng-container matColumnDef="fechaHuevo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Deadline </th>
                 <td mat-cell *matCellDef="let row"> {{row.fechaHuevo | date}} </td>
             </ng-container>
 
             <!-- comentariosHuevo Column -->
             <ng-container matColumnDef="comentariosHuevo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Comentarios </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Comments </th>
                 <td mat-cell *matCellDef="let row"> {{row.comentariosHuevo}} </td>
             </ng-container>
 
             <!-- actions Column -->
             <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Comentarios </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
                 <td mat-cell *matCellDef="let row">
                     <button mat-icon-button (click)="editHuevo(row)" color="primary">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button color="warn">
+                    <button mat-icon-button (click)="deleteHuevo(row.id)" color="warn">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </td>

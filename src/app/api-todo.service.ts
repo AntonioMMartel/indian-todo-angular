@@ -22,10 +22,10 @@ export class ApiTodoService {
   }
 
   updateHuevo(data: any, id: number) {
-    return this.http.put<any>(this.hostname + '/' + id, data);
+    return this.http.put<any>(this.hostname + id, data);
   }
 
   deleteHuevo(id: number) {
-    return this.http.delete<any>(this.hostname + '/' + id);
+    return this.http.delete<any>(this.hostname + id);
   }
 }

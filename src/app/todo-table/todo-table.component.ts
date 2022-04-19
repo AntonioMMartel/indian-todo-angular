@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -18,7 +11,7 @@ import { ApiTodoService } from '../api-todo.service';
   templateUrl: './todo-table.component.html',
   styleUrls: ['./todo-table.component.sass'],
 })
-export class TodoTableComponent implements OnInit, OnChanges {
+export class TodoTableComponent implements OnInit {
   @Input() updateTableOnDialogClose!: boolean;
 
   displayedColumns: string[] = [
@@ -39,16 +32,6 @@ export class TodoTableComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.getAllHuevos();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('SIUAHFUHADF');
-    console.log(this.updateTableOnDialogClose.toString());
-    if (this.updateTableOnDialogClose == true) {
-      this.updateTableOnDialogClose = false;
-      console.log('chiiii');
-      this.getAllHuevos();
-    }
   }
 
   getAllHuevos() {
@@ -82,5 +65,18 @@ export class TodoTableComponent implements OnInit, OnChanges {
     dialogRef.afterClosed().subscribe((resultado) => {
       this.getAllHuevos();
     });
+  }
+
+  deleteHuevo(id: number) {
+    if (!confirm('De verdad quieres matar al huevito?')) return;
+    this.huevoApi.deleteHuevo(id).subscribe({
+      next: (res) => {
+        alert('El huevito ya no hay');
+      },
+      error: () => {
+        alert('El huevito no se ha borrado por razones de espagueti codigo');
+      },
+    });
+    this.getAllHuevos();
   }
 }
