@@ -35,7 +35,7 @@ export class TodoTableComponent implements OnInit {
   }
 
   getAllData() {
-    this.todoApi.getAllHuevos().subscribe({
+    this.todoApi.getAllData().subscribe({
       next: (respuesta) => {
         this.dataSource = new MatTableDataSource(respuesta);
         this.dataSource.paginator = this.paginator;
@@ -62,14 +62,14 @@ export class TodoTableComponent implements OnInit {
       data: row,
     });
 
-    dialogRef.afterClosed().subscribe((resultado) => {
+    dialogRef.afterClosed().subscribe(() => {
       this.getAllData();
     });
   }
 
   deleteData(id: number) {
     if (!confirm('This task will be wiped out of existence')) return;
-    this.todoApi.deleteHuevo(id).subscribe({
+    this.todoApi.deleteData(id).subscribe({
       next: (res) => {
         alert('Task deleted as it is finished.');
       },

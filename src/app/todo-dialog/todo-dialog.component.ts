@@ -9,15 +9,21 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./todo-dialog.component.sass'],
 })
 export class TodoDialogComponent {
-  action: String = 'Guardar';
-  ganstas = [
-    'Chimpancé de feria',
-    'Mazo gansta nano',
-    'Fleje malote pa',
-    'Ciudadano modelo',
-    'Persona genérica',
-    'Orgulloso alumno de la ulpgc',
-    'Yo (Persona extremadamente madura y empática)',
+  action: String = 'Save';
+  familyMembers = [
+    'Indian father Mehdi',
+    'Indian child Abdam',
+    'Indian camel pet Brownie',
+    'Indian wife Anjali',
+  ];
+
+  difficulties = [
+    'Easy',
+    'Medium',
+    'Hard',
+    'Impossible',
+    'Hell',
+    'Press banca 200kg',
   ];
   taskForm!: FormGroup;
 
@@ -25,7 +31,7 @@ export class TodoDialogComponent {
     private FormBuilder: FormBuilder,
     private apiTasks: ApiTodoService,
     private dialogRef: MatDialogRef<TodoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public editHuevo: any
+    @Inject(MAT_DIALOG_DATA) public editTask: any
   ) {
     this.taskForm = this.FormBuilder.group({
       taskName: ['', Validators.required],
@@ -38,51 +44,54 @@ export class TodoDialogComponent {
   }
 
   ngOnInit(): void {
-    if (this.editHuevo) {
-      this.action = 'Editar';
-      this.taskForm.controls['nombreHuevo'].setValue(
-        this.editHuevo.nombreHuevo
+    if (this.editTask) {
+      this.action = 'Edit';
+      this.taskForm.controls['taskName'].setValue(this.editTask.taskName);
+      this.taskForm.controls['taskParticipants'].setValue(
+        this.editTask.taskParticipants
       );
-      this.taskForm.controls['formaHuevo'].setValue(this.editHuevo.formaHuevo);
-      this.taskForm.controls['swagHuevo'].setValue(this.editHuevo.swagHuevo);
-      this.taskForm.controls['bicepsHuevo'].setValue(
-        this.editHuevo.bicepsHuevo
+      this.taskForm.controls['taskDifficulty'].setValue(
+        this.editTask.taskDifficulty
       );
-      this.taskForm.controls['fechaHuevo'].setValue(this.editHuevo.fechaHuevo);
-      this.taskForm.controls['comentariosHuevo'].setValue(
-        this.editHuevo.comentariosHuevo
+      this.taskForm.controls['taskPriority'].setValue(
+        this.editTask.taskPriority
+      );
+      this.taskForm.controls['taskDeadline'].setValue(
+        this.editTask.taskDeadline
+      );
+      this.taskForm.controls['taskComments'].setValue(
+        this.editTask.taskComments
       );
     }
   }
 
-  guardaHuevo() {
+  saveData() {
     // Si no editamos:
-    if (!this.editHuevo) {
+    if (!this.editTask) {
       if (this.taskForm.valid) {
-        //console.log(this.huevoForm.value);
-        this.apiTasks.postHuevo(this.taskForm.value).subscribe({
+        this.apiTasks.postData(this.taskForm.value).subscribe({
           next: (res) => {
-            alert('Huevo guardado con exito');
+            alert('Task has been saved');
             this.taskForm.reset();
             this.dialogRef.close('save');
           },
           error: () => {
-            alert('Ha habido un error guardando tu huevo');
+            alert('Task could not be saved');
           },
         });
       }
       // Si editamos:
     } else {
       this.apiTasks
-        .updateHuevo(this.taskForm.value, this.editHuevo.id)
+        .updateData(this.taskForm.value, this.editTask.id)
         .subscribe({
           next: (res) => {
-            alert('Huevo modificado con éxito');
+            alert('Task modified succesfully');
             this.taskForm.reset();
             this.dialogRef.close('update');
           },
           error: (error) => {
-            alert('No se ha podido modificar el huevo');
+            alert('Task could not be modified');
           },
         });
     }

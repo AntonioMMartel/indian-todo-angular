@@ -1,80 +1,72 @@
 <h1 mat-dialog-title>Añadir nuevo huevo</h1>
 <div mat-dialog-content>
     <form [formGroup]="taskForm">
-        <mat-hint class="aviso">O tiene un nombre mono o te funaré en un hilo de reddit</mat-hint>
+        <mat-hint class="aviso">Playing play station isnt a task, Abdam</mat-hint>
 
         <mat-form-field appearance="outline">
-            <mat-label>Nombre del futuro pollito</mat-label>
-            <input formControlName="taskName" matInput placeholder="Chumpi">
+            <mat-label>Task name</mat-label>
+            <input formControlName="taskName" matInput placeholder="Wash dish">
         </mat-form-field>
 
-        <mat-hint>Los que tienen forma de teseracto son mis preferidos</mat-hint>
-
+        <mat-hint>Abdam is only 6 years old, dont put stupid tasks, Mehdi</mat-hint>
         <mat-form-field appearance="outline">
-            <mat-label>Qué forma tiene el huevo?</mat-label>
-
-            <mat-select formControlName="formaHuevo">
-                <mat-option value="Esfera"> Esfera </mat-option>
-                <mat-option value="Tetraedro"> Tetraedro </mat-option>
-                <mat-option value="Cilindro"> Cilindro </mat-option>
-                <mat-option value="Abstracto"> Abstracto </mat-option>
-                <mat-option value="Quásar"> Quásar </mat-option>
-                <mat-option value="Romboide"> Romboide </mat-option>
-                <mat-option value="Teseracto"> Teseracto </mat-option>
+            <mat-label>Who will perform the task?</mat-label>
+            <mat-select formControlName="taskParticipants">
+                <mat-option *ngFor="let member of familyMembers" [value]="member">
+                    {{ member }}
+                </mat-option>
             </mat-select>
         </mat-form-field>
 
+        <mat-hint>Abdam is only 6 years old, dont put stupid tasks, Mehdi</mat-hint>
+        <mat-form-field appearance="outline">
+            <mat-label>Task difficulty:</mat-label>
+            <mat-select formControlName="taskDifficulty">
+                <mat-option *ngFor="let difficulty of difficulties" [value]="difficulty">
+                    {{ difficulty }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-        <mat-hint>Este dato es clave (creo)</mat-hint>
+        <mat-hint class="aviso"> No Abdam, Math homework isnt supposed to be hard! </mat-hint>
+        <mat-form-field appearance="outline">
+            <mat-label>Task priority (1 is more important than 100)</mat-label>
+            <input formControlName="taskPriority" autocomplete="off" matInput type="number" placeholder="Priority">
+        </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Cuándo cayó el huevo?</mat-label>
-            <input formControlName="fechaHuevo" matInput [matDatepicker]="picker">
+            <mat-label> For when is the task meant to be finished?</mat-label>
+            <input formControlName="taskDeadline" matInput [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-
-        <mat-label>
-            <h2>Cómo de gansta es el huevo?</h2>
-        </mat-label>
-
-        <mat-radio-group formControlName="swagHuevo">
-            <mat-radio-button *ngFor="let gansta of ganstas" [value]="gansta">
-                {{ gansta }}
-            </mat-radio-button>
-        </mat-radio-group>
-
-        <mat-hint>💪🏻💪🏻💪🏻💪🏻💪🏻😎😎</mat-hint>
+        <mat-hint></mat-hint>
 
         <mat-form-field appearance="outline">
-            <mat-label>Volumen del bíceps del futuro pollito (cm³)</mat-label>
-            <input formControlName="bicepsHuevo" autocomplete="off" matInput type="number" placeholder="Biceps">
-        </mat-form-field>
-
-        <mat-hint>Déjate llevar</mat-hint>
-
-        <mat-form-field appearance="outline">
-            <mat-label>Comentarios adicionales</mat-label>
-            <textarea formControlName="comentariosHuevo" autosize matInput></textarea>
+            <mat-label>Additional comments</mat-label>
+            <textarea formControlName="taskComments" autosize matInput></textarea>
         </mat-form-field>
 
         <mat-label>
-            <h2>Cayó antes el huevo o la gallina?</h2>
+            <h2>Who is the best, most genuine and beatiful member of the family?</h2>
         </mat-label>
 
         <mat-radio-group>
-            <mat-radio-button checked [value]="'El huevo'">El huevo :)</mat-radio-button>
-            <mat-radio-button disabled [value]="'La gallina'"> La gallina</mat-radio-button>
+            <mat-radio-button disabled [value]="'Anjali'">Indian wife Anjali </mat-radio-button>
+            <mat-radio-button disabled [value]="'Abdam'"> Indian child Abdam </mat-radio-button>
+            <mat-radio-button disabled [value]="'Mehdi'"> Indian father Mehdi </mat-radio-button>
+            <mat-radio-button checked [value]="'Brownie'"> Indian camel pet Brownie </mat-radio-button>
+
         </mat-radio-group>
-        <mat-hint> Mi página: mi forma de pensar </mat-hint>
+        <mat-hint> Obviamente Brownie, no hay más </mat-hint>
 
     </form>
 
 </div>
 
 <div mat-dialog-actions [align]="'end'">
-    <button mat-raised-button color="warn" mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
-    <button mat-raised-button color="warn" mat-raised-button color="primary" (click)="guardaHuevo()"> {{ action
+    <button mat-raised-button color="warn" mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="warn" mat-raised-button color="primary" (click)="saveData()"> {{ action
         }}</button>
 </div>

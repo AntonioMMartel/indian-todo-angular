@@ -12,20 +12,21 @@ export class ApiTodoService {
     '/api/huevos/';
   constructor(private http: HttpClient) {}
 
-  postHuevo(data: any) {
-    console.log();
+  postData(data: any) {
+    console.log(this.hostname);
     return this.http.post<any>(this.hostname, data);
   }
 
-  getAllHuevos() {
+  getAllData() {
     return this.http.get<any>(this.hostname);
   }
 
-  updateHuevo(data: any, id: number) {
+  updateData(data: any, id: number) {
+    console.log(this.hostname + id);
     return this.http.put<any>(this.hostname + id, data);
   }
 
-  deleteHuevo(id: number) {
+  deleteData(id: number) {
     return this.http.delete<any>(this.hostname + id);
   }
 }
