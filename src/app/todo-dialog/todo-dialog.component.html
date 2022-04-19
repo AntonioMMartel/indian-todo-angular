@@ -1,0 +1,80 @@
+<h1 mat-dialog-title>Añadir nuevo huevo</h1>
+<div mat-dialog-content>
+    <form [formGroup]="huevoForm">
+        <mat-hint class="aviso">O tiene un nombre mono o te funaré en un hilo de reddit</mat-hint>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre del futuro pollito</mat-label>
+            <input formControlName="nombreHuevo" matInput placeholder="Chumpi">
+        </mat-form-field>
+
+        <mat-hint>Los que tienen forma de teseracto son mis preferidos</mat-hint>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Qué forma tiene el huevo?</mat-label>
+
+            <mat-select formControlName="formaHuevo">
+                <mat-option value="Esfera"> Esfera </mat-option>
+                <mat-option value="Tetraedro"> Tetraedro </mat-option>
+                <mat-option value="Cilindro"> Cilindro </mat-option>
+                <mat-option value="Abstracto"> Abstracto </mat-option>
+                <mat-option value="Quásar"> Quásar </mat-option>
+                <mat-option value="Romboide"> Romboide </mat-option>
+                <mat-option value="Teseracto"> Teseracto </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <mat-hint>Este dato es clave (creo)</mat-hint>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Cuándo cayó el huevo?</mat-label>
+            <input formControlName="fechaHuevo" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+
+        <mat-label>
+            <h2>Cómo de gansta es el huevo?</h2>
+        </mat-label>
+
+        <mat-radio-group formControlName="swagHuevo">
+            <mat-radio-button *ngFor="let gansta of ganstas" [value]="gansta">
+                {{ gansta }}
+            </mat-radio-button>
+        </mat-radio-group>
+
+        <mat-hint>💪🏻💪🏻💪🏻💪🏻💪🏻😎😎</mat-hint>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Volumen del bíceps del futuro pollito (cm³)</mat-label>
+            <input formControlName="bicepsHuevo" autocomplete="off" matInput type="number" placeholder="Biceps">
+        </mat-form-field>
+
+        <mat-hint>Déjate llevar</mat-hint>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Comentarios adicionales</mat-label>
+            <textarea formControlName="comentariosHuevo" autosize matInput></textarea>
+        </mat-form-field>
+
+        <mat-label>
+            <h2>Cayó antes el huevo o la gallina?</h2>
+        </mat-label>
+
+        <mat-radio-group>
+            <mat-radio-button checked [value]="'El huevo'">El huevo :)</mat-radio-button>
+            <mat-radio-button disabled [value]="'La gallina'"> La gallina</mat-radio-button>
+        </mat-radio-group>
+        <mat-hint> Mi página: mi forma de pensar </mat-hint>
+
+    </form>
+
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
+    <button mat-raised-button color="warn" mat-raised-button color="primary" (click)="guardaHuevo()"> {{ accion
+        }}</button>
+</div>
