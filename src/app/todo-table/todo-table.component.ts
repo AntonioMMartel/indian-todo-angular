@@ -15,12 +15,12 @@ export class TodoTableComponent implements OnInit {
   @Input() updateTableOnDialogClose!: boolean;
 
   displayedColumns: string[] = [
-    'nombreHuevo',
-    'formaHuevo',
-    'swagHuevo',
-    'bicepsHuevo',
-    'fechaHuevo',
-    'comentariosHuevo',
+    'taskName',
+    'taskParticipants',
+    'taskDifficulty',
+    'taskPriority',
+    'taskDeadline',
+    'taskComments',
     'actions',
   ];
   dataSource!: MatTableDataSource<any>;
@@ -28,21 +28,21 @@ export class TodoTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private huevoApi: ApiTodoService, public dialog: MatDialog) {}
+  constructor(private todoApi: ApiTodoService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.getAllHuevos();
+    this.getAllData();
   }
 
-  getAllHuevos() {
-    this.huevoApi.getAllHuevos().subscribe({
+  getAllData() {
+    this.todoApi.getAllHuevos().subscribe({
       next: (respuesta) => {
         this.dataSource = new MatTableDataSource(respuesta);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
       error: (error) => {
-        alert('No se han podido obtener los huevos guardados');
+        alert('Data could not be found');
       },
     });
   }
@@ -56,27 +56,29 @@ export class TodoTableComponent implements OnInit {
     }
   }
 
-  editHuevo(row: any) {
+  editData(row: any) {
     const dialogRef = this.dialog.open(TodoDialogComponent, {
       width: '50vw',
       data: row,
     });
 
     dialogRef.afterClosed().subscribe((resultado) => {
-      this.getAllHuevos();
+      this.getAllData();
     });
   }
 
-  deleteHuevo(id: number) {
-    if (!confirm('De verdad quieres matar al huevito?')) return;
-    this.huevoApi.deleteHuevo(id).subscribe({
+  deleteData(id: number) {
+    if (!confirm('This task will be wiped out of existence')) return;
+    this.todoApi.deleteHuevo(id).subscribe({
       next: (res) => {
-        alert('El huevito ya no hay');
+        alert('Task deleted as it is finished.');
       },
       error: () => {
-        alert('El huevito no se ha borrado por razones de espagueti codigo');
+        alert(
+          'Task could not be finished probably because of spagetti code reasons'
+        );
       },
     });
-    this.getAllHuevos();
+    this.getAllData();
   }
 }

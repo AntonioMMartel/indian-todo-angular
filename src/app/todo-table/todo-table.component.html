@@ -8,51 +8,44 @@
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
 
-            <!-- nombreHuevo Column -->
-            <ng-container matColumnDef="nombreHuevo">
+            <ng-container matColumnDef="taskName">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Task </th>
-                <td mat-cell *matCellDef="let row"> {{row.nombreHuevo}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.taskName}} </td>
             </ng-container>
 
-            <!-- formaHuevo Column -->
-            <ng-container matColumnDef="formaHuevo">
+            <ng-container matColumnDef="taskParticipants">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Participants </th>
-                <td mat-cell *matCellDef="let row"> {{row.formaHuevo}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.taskParticipants}} </td>
             </ng-container>
 
-            <!-- swagHuevo Column -->
-            <ng-container matColumnDef="swagHuevo">
+            <ng-container matColumnDef="taskDifficulty">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Difficulty </th>
-                <td mat-cell *matCellDef="let row"> {{row.swagHuevo}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.taskDifficulty}} </td>
             </ng-container>
 
-            <!-- bicepsHuevo Column -->
-            <ng-container matColumnDef="bicepsHuevo">
+            <ng-container matColumnDef="taskPriority">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Priority </th>
-                <td mat-cell *matCellDef="let row"> {{row.bicepsHuevo}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.taskPriority}} </td>
             </ng-container>
 
-            <!-- fechaHuevo Column -->
-            <ng-container matColumnDef="fechaHuevo">
+            <ng-container matColumnDef="taskDeadline">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Deadline </th>
-                <td mat-cell *matCellDef="let row"> {{row.fechaHuevo | date}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.taskDeadline | date}} </td>
             </ng-container>
 
-            <!-- comentariosHuevo Column -->
-            <ng-container matColumnDef="comentariosHuevo">
+            <ng-container matColumnDef="taskComments">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Comments </th>
-                <td mat-cell *matCellDef="let row"> {{row.comentariosHuevo}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.taskComments}} </td>
             </ng-container>
 
-            <!-- actions Column -->
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
                 <td mat-cell *matCellDef="let row">
-                    <button mat-icon-button (click)="editHuevo(row)" color="primary">
+                    <button mat-icon-button (click)="editData(row)" color="primary">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button (click)="deleteHuevo(row.id)" color="warn">
-                        <mat-icon>delete</mat-icon>
+                    <button mat-icon-button (click)="deleteData(row.id)" color="warn">
+                        <mat-icon>done_outline</mat-icon>
                     </button>
                 </td>
             </ng-container>

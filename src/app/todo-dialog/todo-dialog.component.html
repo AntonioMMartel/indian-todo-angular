@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>Añadir nuevo huevo</h1>
 <div mat-dialog-content>
-    <form [formGroup]="huevoForm">
+    <form [formGroup]="taskForm">
         <mat-hint class="aviso">O tiene un nombre mono o te funaré en un hilo de reddit</mat-hint>
 
         <mat-form-field appearance="outline">
             <mat-label>Nombre del futuro pollito</mat-label>
-            <input formControlName="nombreHuevo" matInput placeholder="Chumpi">
+            <input formControlName="taskName" matInput placeholder="Chumpi">
         </mat-form-field>
 
         <mat-hint>Los que tienen forma de teseracto son mis preferidos</mat-hint>
@@ -75,6 +75,6 @@
 
 <div mat-dialog-actions [align]="'end'">
     <button mat-raised-button color="warn" mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
-    <button mat-raised-button color="warn" mat-raised-button color="primary" (click)="guardaHuevo()"> {{ accion
+    <button mat-raised-button color="warn" mat-raised-button color="primary" (click)="guardaHuevo()"> {{ action
         }}</button>
 </div>
