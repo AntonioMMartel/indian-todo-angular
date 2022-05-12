@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "indian-todo-list-angular:build:production",
+            "firebaseProject": "formulario-huevos",
+            "firebaseHostingSite": "formulario-huevos"
+          }
         }
       }
     }

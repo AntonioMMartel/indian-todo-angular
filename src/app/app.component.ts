@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TodoDialogComponent } from './todo-dialog/todo-dialog.component';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,8 +11,11 @@ import { TodoDialogComponent } from './todo-dialog/todo-dialog.component';
 export class AppComponent {
   title = 'Indian todo list';
   updateTableOnDialogClose: boolean = false;
+  items: Observable<any[]>;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, firestore: AngularFirestore) {
+    this.items = firestore.collection('tasks').valueChanges();
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(TodoDialogComponent, {
@@ -18,7 +23,6 @@ export class AppComponent {
     });
 
     dialogRef.afterClosed().subscribe((resultado) => {
-      console.log('buenass');
       if (resultado === 'save' || resultado === 'update') {
         this.updateTableOnDialogClose = true;
       }

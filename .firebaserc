@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "formulario-huevos": {
+      "hosting": {
+        "indian-todo-list-angular": [
+          "formulario-huevos"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "formulario-huevos"
+  }
+}
