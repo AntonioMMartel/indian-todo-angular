@@ -34,17 +34,15 @@ export class TodoTableComponent implements OnInit {
     this.getAllData();
   }
 
-  getAllData() {
-    this.todoApi.getAllData().subscribe({
-      next: (respuesta) => {
-        this.dataSource = new MatTableDataSource(respuesta);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      },
-      error: (error) => {
-        alert('Data could not be found');
-      },
-    });
+  async getAllData() {
+    let allData = await this.todoApi.getAllData();
+    if (allData) {
+      this.dataSource = new MatTableDataSource(allData);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    } else {
+      alert('Data could not be found');
+    }
   }
 
   applyFilter(event: Event) {
