@@ -3,7 +3,16 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { initializeApp } from 'firebase/app';
 import { DocumentReference, getFirestore } from 'firebase/firestore';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import {
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc,
+  query,
+  where,
+} from 'firebase/firestore';
 @Injectable({
   providedIn: 'root',
 })
@@ -22,11 +31,12 @@ export class ApiTodoService {
     try {
       const docRef = await addDoc(collection(this.db, 'tasks'), data);
       // console.log('Document written with ID: ', docRef.id);
+      console.log(docRef);
       return docRef;
     } catch (e: any) {
       // console.error('Error adding document: ', e);
+      return null;
     }
-    return null;
   }
 
   async getAllData() {
@@ -34,7 +44,9 @@ export class ApiTodoService {
     let allData: any = [];
     querySnapshot.forEach((doc) => {
       // console.log(`${doc.id} => ${doc.data()}`);
-      allData.push(doc.data());
+      let id = doc.id;
+      allData.push(Object.assign({ ...doc.data(), id }));
+      // Aqui pillas la id tmb
     });
     return allData;
   }
@@ -43,7 +55,13 @@ export class ApiTodoService {
     return this.http.put<any>(this.hostname + id, data);
   }
 
-  deleteData(id: number) {
-    return this.http.delete<any>(this.hostname + id);
+  async deleteData(id: string) {
+    try {
+      console.log(id);
+      await deleteDoc(doc(this.db, 'tasks', id));
+      return true;
+    } catch (e: any) {
+      return false;
+    }
   }
 }

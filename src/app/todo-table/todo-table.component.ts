@@ -43,6 +43,7 @@ export class TodoTableComponent implements OnInit {
     } else {
       alert('Data could not be found');
     }
+    console.log(allData[1]);
   }
 
   applyFilter(event: Event) {
@@ -65,18 +66,16 @@ export class TodoTableComponent implements OnInit {
     });
   }
 
-  deleteData(id: number) {
+  async deleteData(id: string) {
     if (!confirm('This task will be wiped out of existence')) return;
-    this.todoApi.deleteData(id).subscribe({
-      next: (res) => {
-        alert('Task deleted as it is finished.');
-      },
-      error: () => {
-        alert(
-          'Task could not be finished probably because of spagetti code reasons'
-        );
-      },
-    });
+    if (await this.todoApi.deleteData(id)) {
+      alert('Task will be deleted.');
+    } else {
+      alert(
+        'Task could not be finished probably because of spagetti code reasons'
+      );
+    }
+
     this.getAllData();
   }
 }
