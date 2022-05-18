@@ -65,20 +65,18 @@ export class TodoDialogComponent {
     }
   }
 
-  saveData() {
+  async saveData() {
     // Si no editamos:
     if (!this.editTask) {
       if (this.taskForm.valid) {
-        this.apiTasks.postData(this.taskForm.value).subscribe({
-          next: (res) => {
-            alert('Task has been saved');
-            this.taskForm.reset();
-            this.dialogRef.close('save');
-          },
-          error: () => {
-            alert('Task could not be saved');
-          },
-        });
+        let docRef = this.apiTasks.postData(this.taskForm.value);
+        if (await docRef) {
+          alert('Task has been saved');
+          this.taskForm.reset();
+          this.dialogRef.close('save');
+        } else {
+          alert('Task could not be saved');
+        }
       }
       // Si editamos:
     } else {

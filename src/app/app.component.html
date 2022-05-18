@@ -12,9 +12,3 @@
 <div class="tabla">
   <app-todo-table [updateTableOnDialogClose]="this.updateTableOnDialogClose"></app-todo-table>
 </div>
-
-<ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{item.test }}
-  </li>
-</ul>

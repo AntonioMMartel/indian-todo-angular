@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AngularFireModule } from '@angular/fire/compat';
+//import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
-import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+//import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+//import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,12 +29,16 @@ import {
   HttpClientInMemoryWebApiModule,
   InMemoryWebApiModule,
 } from 'angular-in-memory-web-api';
+
 import { InMemoryDataService } from './in-memory-data.service';
 import { TodoDialogComponent } from './todo-dialog/todo-dialog.component';
 import { TodoTableComponent } from './todo-table/todo-table.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+// import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+// import { provideDatabase, getDatabase } from '@angular/fire/database';
+// import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 @NgModule({
   declarations: [AppComponent, TodoDialogComponent, TodoTableComponent],
   imports: [
@@ -63,12 +67,13 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
       dataEncapsulation: false,
     }),
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAnalyticsModule,
-    AngularFirestoreModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore()),
+    //const app = initializeApp(environment.firebaseConfig);
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireAnalyticsModule,
+    // AngularFirestoreModule,
+    //provideFirebaseApp(() => initializeApp(environment.firebase)),
+    //provideDatabase(() => getDatabase()),
+    //provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],
