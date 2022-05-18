@@ -51,13 +51,17 @@ export class ApiTodoService {
     return allData;
   }
 
-  updateData(data: any, id: number) {
-    return this.http.put<any>(this.hostname + id, data);
+  async updateData(data: any, id: string) {
+    try {
+      await updateDoc(doc(this.db, 'tasks', id), data);
+      return true;
+    } catch (e: any) {
+      return false;
+    }
   }
 
   async deleteData(id: string) {
     try {
-      console.log(id);
       await deleteDoc(doc(this.db, 'tasks', id));
       return true;
     } catch (e: any) {

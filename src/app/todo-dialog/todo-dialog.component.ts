@@ -80,18 +80,15 @@ export class TodoDialogComponent {
       }
       // Si editamos:
     } else {
-      this.apiTasks
-        .updateData(this.taskForm.value, this.editTask.id)
-        .subscribe({
-          next: (res) => {
-            alert('Task modified succesfully');
-            this.taskForm.reset();
-            this.dialogRef.close('update');
-          },
-          error: (error) => {
-            alert('Task could not be modified');
-          },
-        });
+      if (
+        await this.apiTasks.updateData(this.taskForm.value, this.editTask.id)
+      ) {
+        alert('Task modified succesfully');
+        this.taskForm.reset();
+        this.dialogRef.close('update');
+      } else {
+        alert('Task could not be modified');
+      }
     }
   }
 }

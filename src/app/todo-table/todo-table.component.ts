@@ -43,7 +43,6 @@ export class TodoTableComponent implements OnInit {
     } else {
       alert('Data could not be found');
     }
-    console.log(allData[1]);
   }
 
   applyFilter(event: Event) {
@@ -69,10 +68,10 @@ export class TodoTableComponent implements OnInit {
   async deleteData(id: string) {
     if (!confirm('This task will be wiped out of existence')) return;
     if (await this.todoApi.deleteData(id)) {
-      alert('Task will be deleted.');
+      alert('Task has been deleted.');
     } else {
       alert(
-        'Task could not be finished probably because of spagetti code reasons'
+        'Task could not be deleted probably because of spagetti code reasons (or connection issues)'
       );
     }
 
