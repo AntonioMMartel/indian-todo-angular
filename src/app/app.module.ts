@@ -24,13 +24,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-
-import {
-  HttpClientInMemoryWebApiModule,
-  InMemoryWebApiModule,
-} from 'angular-in-memory-web-api';
-
-import { InMemoryDataService } from './in-memory-data.service';
 import { TodoDialogComponent } from './todo-dialog/todo-dialog.component';
 import { TodoTableComponent } from './todo-table/todo-table.component';
 // import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -62,10 +55,6 @@ import { getFirestore } from 'firebase/firestore';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    InMemoryWebApiModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-    }),
     BrowserModule,
     //const app = initializeApp(environment.firebaseConfig);
     // AngularFireModule.initializeApp(environment.firebase),

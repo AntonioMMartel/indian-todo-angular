@@ -1,11 +1,14 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <audio controls autoplay loop hidden>
+    <source src="/assets/IndianMasterpiece.mp3" type="audio/mpeg">
+  </audio>
+  <button mat-icon-button class="musicote" (click)="toggleMUSICOTE($event.target)" aria-label="Encender musicote">
     <mat-icon>play_circle_outline</mat-icon>
   </button>
   <span> Mehdi's family house TODO list
   </span>
   <span class="spacer"></span>
-  <button mat-icon-button (click)="openDialog()" class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button (click)="openDialog()" class="example-icon" aria-label="Add task">
     <mat-icon>add_circle_outline</mat-icon>
   </button>
 </mat-toolbar>

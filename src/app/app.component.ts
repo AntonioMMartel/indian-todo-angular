@@ -10,6 +10,7 @@ import { TodoDialogComponent } from './todo-dialog/todo-dialog.component';
 export class AppComponent {
   title = 'Indian todo list';
   updateTableOnDialogClose: boolean = false;
+  musicState = false;
 
   constructor(public dialog: MatDialog) {}
   openDialog() {
@@ -22,5 +23,15 @@ export class AppComponent {
         this.updateTableOnDialogClose = true;
       }
     });
+  }
+
+  toggleMUSICOTE(image: any): void {
+    if (!this.musicState) {
+      document.getElementsByTagName('audio')[0].play();
+      this.musicState = !this.musicState;
+    } else {
+      document.getElementsByTagName('audio')[0].pause();
+      this.musicState = !this.musicState;
+    }
   }
 }
