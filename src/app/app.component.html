@@ -1,8 +1,9 @@
 <mat-toolbar color="primary">
-  <audio controls autoplay loop hidden>
-    <source src="/assets/IndianMasterpiece.mp3" type="audio/mpeg">
+  <audio controls loop hidden>
+    <!-- autoplay-->
+    <source src="/assets/music/IndianMasterpiece.mp3" type="audio/mpeg">
   </audio>
-  <button mat-icon-button class="musicote" (click)="toggleMUSICOTE($event.target)" aria-label="Encender musicote">
+  <button mat-icon-button class="musicote" (click)="toggleMUSICOTE()" aria-label="Encender musicote">
     <mat-icon>play_circle_outline</mat-icon>
   </button>
   <span> Mehdi's family house TODO list
@@ -15,3 +16,8 @@
 <div class="tabla">
   <app-todo-table [updateTableOnDialogClose]="this.updateTableOnDialogClose"></app-todo-table>
 </div>
+<img class="speaker" (window:resize)="onResize($event)" id="left-speaker" src="assets/images/AltavozLeft.png"
+  alt="Altavoz crema">
+
+<img class="speaker" (window:resize)="onResize($event)" id="right-speaker" src="assets/images/AltavozRight.png"
+  alt="Altavoz crema">
