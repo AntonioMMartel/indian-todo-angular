@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { initializeApp } from 'firebase/app';
@@ -20,12 +19,7 @@ export class ApiTodoService {
   // Initialize Cloud Firestore and get a reference to the service
   db = getFirestore(initializeApp(environment.firebaseConfig));
 
-  hostname =
-    document.location.protocol +
-    '//' +
-    document.location.hostname +
-    '/api/huevos/';
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   async postData(data: any) {
     try {
