@@ -30,12 +30,18 @@ export class HomeComponent implements OnInit {
     document.getElementById('right-speaker')!.style.left =
       window.innerWidth - 260 + 'px';
 
+    document.getElementById('volume')!.style.bottom =
+      window.innerWidth - 470 + 'px';
+
     this.audioElement = <HTMLAudioElement>document.getElementById('audio');
     this.audioElement.volume = 0.1;
     document.getElementsByTagName('audio')[0].play();
   }
 
   onResize(event: any) {
+    document.getElementById('volume')!.style.bottom =
+      window.innerWidth - 470 + 'px';
+
     document.getElementById('left-speaker')!.style.top =
       window.innerHeight - 440 + 'px';
 
