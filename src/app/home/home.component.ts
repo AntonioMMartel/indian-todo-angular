@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       window.innerWidth - 260 + 'px';
 
     document.getElementById('volume')!.style.bottom =
-      window.innerWidth - 470 + 'px';
+      window.innerHeight - 250 + 'px';
 
     this.audioElement = <HTMLAudioElement>document.getElementById('audio');
     this.audioElement.volume = 0.1;
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 
   onResize(event: any) {
     document.getElementById('volume')!.style.bottom =
-      window.innerWidth - 470 + 'px';
+      window.innerHeight - 250 + 'px';
 
     document.getElementById('left-speaker')!.style.top =
       window.innerHeight - 440 + 'px';
