@@ -22,9 +22,15 @@ import { MatSortModule } from '@angular/material/sort';
 import { TodoDialogComponent } from './todo-dialog/todo-dialog.component';
 import { TodoTableComponent } from './todo-table/todo-table.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, TodoDialogComponent, TodoTableComponent],
+  declarations: [
+    AppComponent,
+    TodoDialogComponent,
+    TodoTableComponent,
+    HomeComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
