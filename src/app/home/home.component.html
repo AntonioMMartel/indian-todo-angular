@@ -6,7 +6,8 @@
     <div (mouseover)="showVolumeBar()" (mouseleave)="hideVolumeBar()">
 
         <button mat-icon-button class="musicote nav-element" (click)="toggleMUSICOTE()" aria-label="Encender musicote">
-            <mat-icon class="nav-element">play_circle_outline</mat-icon>
+            <mat-icon *ngIf="!musicState" class="nav-element">play_circle_outline</mat-icon>
+            <mat-icon *ngIf="musicState" class="nav-element">pause_circle_outline</mat-icon>
 
         </button>
         <mat-slider vertical invert id="volume" [(value)]="selectedVolume" tickInterval="1" step="1" min="0" max="100"
