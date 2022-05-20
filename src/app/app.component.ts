@@ -54,10 +54,14 @@ export class AppComponent {
 
   toggleMUSICOTE(): void {
     if (!this.musicState) {
+      document.getElementById('right-speaker')!.style.opacity = '1';
+      document.getElementById('left-speaker')!.style.opacity = '1';
       document.getElementsByTagName('audio')[0].play();
       this.musicState = !this.musicState;
       this.startSpeakerPulse();
     } else {
+      document.getElementById('right-speaker')!.style.opacity = '0';
+      document.getElementById('left-speaker')!.style.opacity = '0';
       document.getElementsByTagName('audio')[0].pause();
       this.musicState = !this.musicState;
       this.stopSpeakerPulse();
