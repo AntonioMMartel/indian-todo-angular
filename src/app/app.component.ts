@@ -17,6 +17,8 @@ export class AppComponent {
   speakersPulseState = false;
   selectedVolume!: number | null;
 
+  audioElement!: HTMLAudioElement;
+
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -28,6 +30,8 @@ export class AppComponent {
 
     document.getElementById('right-speaker')!.style.left =
       window.innerWidth - 260 + 'px';
+
+    this.audioElement = <HTMLAudioElement>document.getElementById('audio');
   }
 
   onResize(event: any) {
@@ -87,11 +91,6 @@ export class AppComponent {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  seeVolumeLabel(value: number) {
-    console.log(value);
-    return value;
-  }
-
   showVolumeBar() {
     this.showVolume = true;
     document.getElementById('volume')!.style.display = 'block';
@@ -102,5 +101,9 @@ export class AppComponent {
     this.showVolume = false;
     document.getElementById('volume')!.style.display = 'none';
     document.getElementById('volume')!.style.opacity = '0';
+  }
+
+  changeVolume() {
+    this.audioElement.volume = this.selectedVolume! / 100;
   }
 }

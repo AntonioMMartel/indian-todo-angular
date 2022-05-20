@@ -1,5 +1,5 @@
 <mat-toolbar class="toolbar" color="primary">
-  <audio controls loop hidden>
+  <audio id="audio" controls loop hidden>
     <!-- autoplay-->
     <source src="/assets/music/IndianMasterpiece.mp3" type="audio/mpeg">
   </audio>
@@ -9,8 +9,8 @@
       <mat-icon class="nav-element">play_circle_outline</mat-icon>
 
     </button>
-    <mat-slider vertical invert thumbLabel id="volume" [displayWith]="seeVolumeLabel" [(value)]="selectedVolume"
-      tickInterval="1" step="1" min="0" max="100" aria-label="units">
+    <mat-slider vertical invert id="volume" [(value)]="selectedVolume" tickInterval="1" step="1" min="0" max="100"
+      aria-label="units" (change)="changeVolume()">
     </mat-slider>
   </div>
 
