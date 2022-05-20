@@ -12,9 +12,10 @@ export class AppComponent {
   title = 'Indian todo list';
   updateTableOnDialogClose: boolean = false;
   musicState = false; // Musica encendida o apagada
-
+  showVolume = false;
   interval: any;
-  speakersPulseState = false; // Si el
+  speakersPulseState = false;
+  selectedVolume!: number | null;
 
   constructor(public dialog: MatDialog) {}
 
@@ -84,5 +85,22 @@ export class AppComponent {
 
   sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  seeVolumeLabel(value: number) {
+    console.log(value);
+    return value;
+  }
+
+  showVolumeBar() {
+    this.showVolume = true;
+    document.getElementById('volume')!.style.display = 'block';
+    document.getElementById('volume')!.style.opacity = '1';
+  }
+
+  hideVolumeBar() {
+    this.showVolume = false;
+    document.getElementById('volume')!.style.display = 'none';
+    document.getElementById('volume')!.style.opacity = '0';
   }
 }

@@ -21,6 +21,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TodoDialogComponent } from './todo-dialog/todo-dialog.component';
 import { TodoTableComponent } from './todo-table/todo-table.component';
+import { MatSliderModule } from '@angular/material/slider';
+
 @NgModule({
   declarations: [AppComponent, TodoDialogComponent, TodoTableComponent],
   imports: [
@@ -45,6 +47,7 @@ import { TodoTableComponent } from './todo-table/todo-table.component';
     MatPaginatorModule,
     MatSortModule,
     BrowserModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
