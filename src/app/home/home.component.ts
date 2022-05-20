@@ -10,7 +10,7 @@ import { TodoDialogComponent } from '../todo-dialog/todo-dialog.component';
 @HostListener('window:resize', ['$event'])
 export class HomeComponent implements OnInit {
   updateTableOnDialogClose: boolean = false;
-  musicState = false; // Musica encendida o apagada
+  musicState = true; // Musica encendida o apagada
   showVolume = false;
   interval: any;
   speakersPulseState = false;
@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
       window.innerWidth - 260 + 'px';
 
     this.audioElement = <HTMLAudioElement>document.getElementById('audio');
+    this.audioElement.volume = 0.1;
+    document.getElementsByTagName('audio')[0].play();
   }
 
   onResize(event: any) {
