@@ -23,6 +23,7 @@ import { TodoDialogComponent } from './todo-dialog/todo-dialog.component';
 import { TodoTableComponent } from './todo-table/todo-table.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { HomeComponent } from './home/home.component';
+import { FamilyComponent } from './family/family.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HomeComponent } from './home/home.component';
     TodoDialogComponent,
     TodoTableComponent,
     HomeComponent,
+    FamilyComponent,
   ],
   imports: [
     BrowserModule,
