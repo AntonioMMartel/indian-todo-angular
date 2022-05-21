@@ -2,7 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiTodoService } from '../api-todo.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { TodoTableUpdaterService } from '../todo-table-updater.service';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-todo-dialog',
   templateUrl: './todo-dialog.component.html',
@@ -27,10 +28,14 @@ export class TodoDialogComponent {
   ];
   taskForm!: FormGroup;
 
+  tableUpdaterState = 'Element being added';
+  tableUpdaterStateActual = new BehaviorSubject('');
+
   constructor(
     private FormBuilder: FormBuilder,
     private apiTasks: ApiTodoService,
     private dialogRef: MatDialogRef<TodoDialogComponent>,
+    private todoTableUpdater: TodoTableUpdaterService,
     @Inject(MAT_DIALOG_DATA) public editTask: any
   ) {
     this.taskForm = this.FormBuilder.group({
@@ -63,6 +68,9 @@ export class TodoDialogComponent {
         this.editTask.taskComments
       );
     }
+    this.todoTableUpdater.elementBeingAddedStateActual.subscribe(
+      (state) => this.tableUpdaterStateActual.next(state) // Guardamos el estado del camello
+    );
   }
 
   async saveData() {
@@ -74,6 +82,9 @@ export class TodoDialogComponent {
           alert('Task has been saved');
           this.taskForm.reset();
           this.dialogRef.close('save');
+          this.todoTableUpdater.updateElementBeingAddedState(
+            this.tableUpdaterState
+          );
         } else {
           alert('Task could not be saved');
         }

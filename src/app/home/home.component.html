@@ -1,34 +1,3 @@
-<mat-toolbar class="toolbar" color="primary">
-    <audio id="audio" controls loop hidden>
-        <source src="/assets/music/IndianMasterpiece.mp3" type="audio/mpeg">
-    </audio>
-    <div (mouseover)="showVolumeBar()" (mouseleave)="hideVolumeBar()">
-
-        <button mat-icon-button class="musicote nav-element" (click)="toggleMUSICOTE()" aria-label="Encender musicote">
-            <mat-icon *ngIf="!musicState" class="nav-element">play_circle_outline</mat-icon>
-            <mat-icon *ngIf="musicState" class="nav-element">pause_circle_outline</mat-icon>
-
-        </button>
-        <mat-slider vertical invert id="volume" [(value)]="selectedVolume" tickInterval="1" step="1" min="0" max="100"
-            aria-label="units" (change)="changeVolume()">
-        </mat-slider>
-    </div>
-
-    <span class="nav-element"> Mehdi's family house TODO list
-    </span>
-    <span class="spacer"></span>
-    <button mat-icon-button (click)="openDialog()" class="example-icon" aria-label="Add task">
-        <mat-icon>add_circle_outline</mat-icon>
-    </button>
-</mat-toolbar>
-
-
 <div class="tabla">
     <app-todo-table [updateTableOnDialogClose]="this.updateTableOnDialogClose"></app-todo-table>
 </div>
-
-<img class="speaker" (window:resize)="onResize($event)" id="left-speaker" src="assets/images/AltavozLeft.png"
-    alt="Altavoz crema">
-
-<img class="speaker" (window:resize)="onResize($event)" id="right-speaker" src="assets/images/AltavozRight.png"
-    alt="Altavoz crema">

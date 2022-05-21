@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TodoDialogComponent } from '../todo-dialog/todo-dialog.component';
 import { ApiTodoService } from '../api-todo.service';
+import { TodoTableUpdaterService } from '../todo-table-updater.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-todo-table',
@@ -28,10 +30,28 @@ export class TodoTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private todoApi: ApiTodoService, public dialog: MatDialog) {}
+  tableUpdaterState = 'No element being added';
+  tableUpdaterStateActual = new BehaviorSubject('');
+
+  constructor(
+    private todoApi: ApiTodoService,
+    public dialog: MatDialog,
+    private todoTableUpdater: TodoTableUpdaterService
+  ) {}
 
   ngOnInit(): void {
     this.getAllData();
+    this.todoTableUpdater.elementBeingAddedStateActual.subscribe(
+      (state) => this.tableUpdaterStateActual.next(state) // Guardamos el estado del camello
+    );
+    this.tableUpdaterStateActual.subscribe(() => {
+      if (this.tableUpdaterStateActual.getValue() == 'Element being added') {
+        this.getAllData();
+        this.todoTableUpdater.updateElementBeingAddedState(
+          this.tableUpdaterState
+        );
+      }
+    });
   }
 
   async getAllData() {
