@@ -27,11 +27,6 @@ export class AppComponent implements OnInit {
   audioElement!: HTMLAudioElement;
 
   constructor(public dialog: MatDialog) {}
-
-  ngAfterViewInit() {
-    console.log(this.todoTable);
-  }
-
   ngOnInit() {
     document.getElementById('left-speaker')!.style.top =
       window.innerHeight - 440 + 'px';

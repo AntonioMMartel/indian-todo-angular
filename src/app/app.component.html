@@ -1,33 +1,38 @@
 <mat-toolbar class="toolbar" color="primary">
-    <audio id="audio" controls loop hidden>
-        <source src="/assets/music/IndianMasterpiece.mp3" type="audio/mpeg">
-    </audio>
-    <div (mouseover)="showVolumeBar()" (mouseleave)="hideVolumeBar()">
+    <div class="toolbar-left">
+        <audio id="audio" controls loop hidden>
+            <source src="/assets/music/IndianMasterpiece.mp3" type="audio/mpeg">
+        </audio>
+        <div (mouseover)="showVolumeBar()" (mouseleave)="hideVolumeBar()">
 
-        <button mat-icon-button class="musicote nav-element" (click)="toggleMUSICOTE()" aria-label="Encender musicote">
-            <mat-icon *ngIf="!musicState" class="nav-element">play_circle_outline</mat-icon>
-            <mat-icon *ngIf="musicState" class="nav-element">pause_circle_outline</mat-icon>
+            <button mat-icon-button class="musicote nav-element" (click)="toggleMUSICOTE()"
+                aria-label="Encender musicote">
+                <mat-icon *ngIf="!musicState" class="nav-element">play_circle_outline</mat-icon>
+                <mat-icon *ngIf="musicState" class="nav-element">pause_circle_outline</mat-icon>
 
-        </button>
-        <mat-slider vertical invert id="volume" [(value)]="selectedVolume" tickInterval="1" step="1" min="0" max="100"
-            aria-label="units" (change)="changeVolume()">
-        </mat-slider>
+            </button>
+            <mat-slider vertical invert id="volume" [(value)]="selectedVolume" tickInterval="1" step="1" min="0"
+                max="100" aria-label="units" (change)="changeVolume()">
+            </mat-slider>
+        </div>
+        <span class="nav-element"> Mehdi's family house TODO list
+        </span>
     </div>
 
-    <span class="nav-element"> Mehdi's family house TODO list
-    </span>
-    <div class="center">
-        <button mat-icon-button class="family nav-element" (click)="toggleMUSICOTE()" aria-label="Encender musicote">
+
+    <div class="toolbar-center">
+        <button mat-icon-button class="nav-element" routerLink="/family" aria-label="See family members">
             <mat-icon>people_outline</mat-icon>
         </button>
-        <button mat-icon-button class="family nav-element" (click)="toggleMUSICOTE()" aria-label="Encender musicote">
+        <button mat-icon-button class="nav-element" routerLink="/" aria-label="Go home">
             <mat-icon>home</mat-icon>
         </button>
     </div>
-    <span class="spacer"></span>
-    <button mat-icon-button (click)="openDialog()" class="example-icon" aria-label="Add task">
-        <mat-icon>add_circle_outline</mat-icon>
-    </button>
+    <div class="toolbar-right">
+        <button mat-icon-button (click)="openDialog()" class="example-icon" aria-label="Add task">
+            <mat-icon>add_circle_outline</mat-icon>
+        </button>
+    </div>
 </mat-toolbar>
 
 
