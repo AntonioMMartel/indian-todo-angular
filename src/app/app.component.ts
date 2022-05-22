@@ -42,11 +42,6 @@ export class AppComponent implements OnInit {
 
     this.audioElement = <HTMLAudioElement>document.getElementById('audio');
     this.audioElement.volume = 0.15;
-
-    document.getElementById('right-speaker')!.style.opacity = '1';
-    document.getElementById('left-speaker')!.style.opacity = '1';
-    document.getElementsByTagName('audio')[0].play();
-    this.startSpeakerPulse();
   }
 
   onResize(event: any) {
