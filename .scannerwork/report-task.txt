@@ -1,0 +1,6 @@
+projectKey=Indian-todo-list
+serverUrl=http://localhost:9000
+serverVersion=9.4.0.54424
+dashboardUrl=http://localhost:9000/dashboard?id=Indian-todo-list
+ceTaskId=AYDr7uvpjGEAUZL0BHSm
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYDr7uvpjGEAUZL0BHSm
