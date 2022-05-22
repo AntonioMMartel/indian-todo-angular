@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
       window.innerHeight - 250 + 'px';
 
     this.audioElement = <HTMLAudioElement>document.getElementById('audio');
-    this.audioElement.volume = 0.1;
+    this.audioElement.volume = 0.15;
 
     document.getElementById('right-speaker')!.style.opacity = '1';
     document.getElementById('left-speaker')!.style.opacity = '1';
