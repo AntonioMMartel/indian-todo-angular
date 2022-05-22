@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   @ViewChild('TodoTableComponent', { static: false })
   todoTable!: TodoTableComponent;
   title = 'Indian todo list';
-  musicState = true; // Musica encendida o apagada
+  musicState = false; // Musica encendida o apagada
   showVolume = false;
   interval: any;
   speakersPulseState = false;
