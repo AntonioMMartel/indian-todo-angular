@@ -1,19 +1,26 @@
 table 
   width: 100%
-
-
-
-
+  text-overflow: clip
+  white-space: wrap
+  word-wrap: break-word
+  word-break: normal
 .mat-form-field 
   font-size: 1rem
   width: 100%
 
 td, th 
-  width: auto
+  min-height: 100px
   padding-right: 2rem
   padding-left: 2rem
   text-align: center
-  
+  height: auto
+
+
+.comments
+  white-space: wrap
+  word-wrap: break-word
+  word-break: break-all
+
 
 ::ng-deep .mat-sort-header-container 
   display: flex

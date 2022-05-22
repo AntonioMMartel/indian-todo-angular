@@ -97,4 +97,8 @@ export class TodoTableComponent implements OnInit {
 
     this.getAllData();
   }
+
+  min(first: number, second: number) {
+    return first < second ? first : second;
+  }
 }

@@ -35,7 +35,9 @@
 
             <ng-container matColumnDef="taskComments">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Comments </th>
-                <td mat-cell *matCellDef="let row"> {{row.taskComments}} </td>
+                <td class="comments" mat-cell *matCellDef="let row"> {{row.taskComments.substring(0,
+                    min(row.taskComments.Length,
+                    3000) )}} </td>
             </ng-container>
 
             <ng-container matColumnDef="actions">
