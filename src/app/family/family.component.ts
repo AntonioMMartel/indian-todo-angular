@@ -25,7 +25,7 @@ export class FamilyComponent implements OnInit {
     },
     {
       name: 'Brownie',
-      description: 'Proud indian child and Buhdda follower',
+      description: 'Proud indian camel and follower of Allah',
       image: '../../assets/images/Brownie.gif',
     },
   ];
